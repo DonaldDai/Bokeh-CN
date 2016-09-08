@@ -24,7 +24,7 @@ Bokeh是一个很美观实用的Python交互绘图库，但是他的官方文档
 
 - 大标题以二级标题（**两个#**）显示，如
 
-  ## 快速入门（Quickstart）
+  ## 标题
 
 - 要翻译哪一部分请提前Issue或者E-mail我，先来后到哦~
 
@@ -96,7 +96,7 @@ Bokeh是一个很美观实用的Python交互绘图库，但是他的官方文档
 - Learning More
 - Tutorials
 
-## 快速入门(Quickstart)
+## 快速入门（Quickstart）
 
 原文 [Quickstart](http://bokeh.pydata.org/en/latest/docs/user_guide/quickstart.html)
 
