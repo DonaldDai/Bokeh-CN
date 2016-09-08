@@ -64,7 +64,7 @@ p.line(x, y, legend="Temp.", line_width=2)
 show(p)
 ```
 
-![](/img/QS-GS)
+![](/img/QS-GS1.png)
 
 当运行这段代码之后，会在项目当前目录下创建一个`"lines.html"`文件，并且浏览器会自动打开一个新标签页来显示刚刚创建的图表（为展示需要，会把代码生成的图形放在此文档中，以供参考）
 
@@ -111,7 +111,7 @@ p.line(x, y2, legend="y=10^x^2", line_color="orange", line_dash="4 4")
 show(p)
 ```
 
-[图图]
+![](/img/QS-GS2.png)
 
 ### 在Jupyter Notebooks上运用Bokeh
 
