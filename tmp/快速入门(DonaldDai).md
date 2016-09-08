@@ -227,4 +227,4 @@ show(p)
 
 [HELP Picture]
 
-[To be continue]
+[To be continue].
