@@ -71,7 +71,7 @@ Bokeh是一个很美观实用的Python交互绘图库，但是他的官方文档
 目录
 
 - User Guide
-- [快速入门（Quickstart）](#quickstart)
+- <a href="#quickstart" >快速入门（Quickstart）</a>
 - Getting Set Up
 - Defining Key Concepts
 - Plotting with Basic Glyphs
@@ -96,7 +96,7 @@ Bokeh是一个很美观实用的Python交互绘图库，但是他的官方文档
 - Learning More
 - Tutorials
 
-## Quickstart
+<p id="quickstart">## 快速入门（Quickstart）</p>
 
 原文 [Quickstart](http://bokeh.pydata.org/en/latest/docs/user_guide/quickstart.html)
 
