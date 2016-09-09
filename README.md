@@ -15,6 +15,10 @@ Bokeh是一个很美观实用的Python交互绘图库，但是他的官方文档
 - 由于Markdown不能显示HTML，交互式图形暂时以截图的方式展示
 - 更新周期为1天，每天晚上0点我会把一天的提交整合到README.md，方便大家阅读
 
+### 参与注意选项
+
+请移步[CONTRIBUTING](./CONTRIBUTING.md)
+
 ###待处理问题
 
 例子结果能不显示在Makedown中，是否要链接到外网上？
@@ -41,7 +45,7 @@ Bokeh是一个很美观实用的Python交互绘图库，但是他的官方文档
 - JavaScript Callbacks
 - Using Bokeh Commands
 - Running a Bokeh Server
-- 在HTML中嵌入图表和Apps（Embedding Plots and Apps）
+- <a href="EmbeddingPlotsandApps">在HTML中嵌入图表和Apps（Embedding Plots and Apps）</a>
 - Speeding up with WebGL
 - Mapping Geo Data
 - Developing with JavaScript
@@ -280,7 +284,7 @@ show(p)
 
 [To be continue].
 
-## 在HTML中嵌入图表和Apps（Embedding Plots and Apps）
+## <p id="EmbeddingPlotsandApps">在HTML中嵌入图表和Apps（Embedding Plots and Apps）</p>
 
 原文 [Embedding Plots and Apps](http://bokeh.pydata.org/en/latest/docs/user_guide/embed.html)
 
