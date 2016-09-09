@@ -45,7 +45,7 @@ Bokeh是一个很美观实用的Python交互绘图库，但是他的官方文档
 - JavaScript Callbacks
 - Using Bokeh Commands
 - Running a Bokeh Server
-- <a href="EmbeddingPlotsandApps">在HTML中嵌入图表和Apps（Embedding Plots and Apps）</a>
+- <a href="#EmbeddingPlotsandApps">在HTML中嵌入图表和Apps（Embedding Plots and Apps）</a>
 - Speeding up with WebGL
 - Mapping Geo Data
 - Developing with JavaScript
