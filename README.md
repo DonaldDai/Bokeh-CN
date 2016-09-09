@@ -24,7 +24,7 @@ Bokeh是一个很美观实用的Python交互绘图库，但是他的官方文档
 目录
 
 - User Guide
-- 快速入门（Quickstart）
+- <a href="#Quickstart">快速入门（Quickstart）</a>
 - Getting Set Up
 - Defining Key Concepts
 - Plotting with Basic Glyphs
@@ -41,7 +41,7 @@ Bokeh是一个很美观实用的Python交互绘图库，但是他的官方文档
 - JavaScript Callbacks
 - Using Bokeh Commands
 - Running a Bokeh Server
-- [在HTML中嵌入图表和Apps（Embedding Plots and Apps）](#在HTML中嵌入图表和Apps（Embedding Plots and Apps）)
+- 在HTML中嵌入图表和Apps（Embedding Plots and Apps）
 - Speeding up with WebGL
 - Mapping Geo Data
 - Developing with JavaScript
@@ -49,7 +49,7 @@ Bokeh是一个很美观实用的Python交互绘图库，但是他的官方文档
 - Learning More
 - Tutorials
 
-## 快速入门（Quickstart）
+## <p id="Quickstart">快速入门（Quickstart）</p>
 
 原文 [Quickstart](http://bokeh.pydata.org/en/latest/docs/user_guide/quickstart.html)
 
