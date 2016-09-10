@@ -2,7 +2,7 @@
 
 原文 [Quickstart](http://bokeh.pydata.org/en/latest/docs/user_guide/quickstart.html)
 
-### 介绍（Introduction）
+### 介绍
 
 Bokeh是致力于网页浏览器展示的Python交互式图表库。Bokeh能读取巨大的数据集或者流数据以简单快捷的方式为网页提供优美、简洁、高交互性能的图形。
 
@@ -188,7 +188,7 @@ p = figure(x_range=[0,10], y_range=(10, 20))
 
 #### 以向量形式传入颜色和尺寸
 
-这个例子主要演示如何传入一系列的数据给绘图参数如`fill_color`和`radius`。你也可以在这个例子中找到以下方式的用法：
+这个例子主要演示如何传入一系列的数据给绘图参数如`fill_color`和`radius`。你也可以在这个例子中找到以下情况的用法：
 
 - 传入一个包含工具名称的列表给`figure()`
 - 用`mode`参数从CDN获取BokehJS文件
@@ -225,6 +225,165 @@ p.circle(x,y, radius=radii, fill_color=colors, fill_alpha=0.6, line_color=None)
 show(p)
 ```
 
-[HELP Picture]
+【图图】
 
-[To be continue].
+#### 数据联动的两种方式
+
+> 什么是数据联动？
+>
+> 在这个例子中，数据联动指的是一个图形中的数据变化会影响到另一个图形中的数据
+
+有时候在不同的图形中添加联动的数据曲线更有利于战术数据。在Bokeh中进行数据联动，一般只需在几个图形间传递将组件参数即可。下面的例子演示了在Bokeh的笔工具联动**（linked panning）**，方法是在图形间传递几个组件参数。你也可以在下面的例子中找到一下情况的用法：
+
+- 通过多次调用`figure()`函数来创建多个图形
+- 用`gridplot()`函数来排列多个图形
+- 用`Figure.triangle`和`Figure.square`在图形中添加新的标识
+- 通过调节`toolbar_location`的值为`None`来隐藏工具栏
+- `line_color`、`fill_color`、`line_alpha`、`fill_alpha`属性的用法
+
+```python
+import numpy as np
+
+from bokeh.layouts import gridplot
+from bokeh.plotting import figure, output_file, show
+
+# prepare some data
+N = 100
+x = np.linspace(0, 4*np.pi, N)
+y0 = np.sin(x)
+y1 = np.cos(x)
+y2 = np.sin(x) + np.cos(x)
+
+# output to static HTML file
+output_file("linked_panning.html")
+
+# create a new plot
+s1 = figure(width=250, plot_height=250, title=None)
+s1.circle(x, y0, size=10, color="navy", alpha=0.5)
+
+# NEW: create a new plot and share both ranges
+s2 = figure(width=250, height=250, x_range=s1.x_range, y_range=s1.y_range, title=None)
+s2.triangle(x, y1, size=10, color="firebrick", alpha=0.5)
+
+# NEW: create a new plot and share only one range
+s3 = figure(width=250, height=250, x_range=s1.x_range, title=None)
+s3.square(x, y2, size=10, color="olive", alpha=0.5)
+
+# NEW: put the subplots in a gridplot
+p = gridplot([[s1, s2, s3]], toolbar_location=None)
+
+# show the results
+show(p)
+```
+
+【图图】
+
+尽管工具栏是隐藏的，但是笔工具仍然处于激活状态。点击并拖动图形可以改变坐标轴的范围，同时你也可以观察到三个图形的坐标轴数据是怎么联动的
+
+另一个例子是**选择联动（linked brushing）**， 实现的方式是在两个图形中传递[`ColumnDataSource`](http://bokeh.pydata.org/en/latest/docs/reference/models/sources.html#bokeh.models.sources.ColumnDataSource)数据结构参数。
+
+```python
+import numpy as np
+from bokeh.plotting import *
+from bokeh.models import ColumnDataSource
+
+# prepare some date
+N = 300
+x = np.linspace(0, 4*np.pi, N)
+y0 = np.sin(x)
+y1 = np.cos(x)
+
+# output to static HTML file
+output_file("linked_brushing.html")
+
+# NEW: create a column data source for the plots to share
+source = ColumnDataSource(data=dict(x=x, y0=y0, y1=y1))
+
+TOOLS = "pan,wheel_zoom,box_zoom,reset,save,box_select,lasso_select"
+
+# create a new plot and add a renderer
+left = figure(tools=TOOLS, width=350, height=350, title=None)
+left.circle('x', 'y0', source=source)
+
+# create another new plot and add a renderer
+right = figure(tools=TOOLS, width=350, height=350, title=None)
+right.circle('x', 'y1', source=source)
+
+# put the subplots in a gridplot
+p = gridplot([[left, right]])
+
+# show the results
+show(p)
+```
+
+选择方形选择工具（box select）或者套索选择工具（lasso select）在其中一个图形中进行操作，这个操作会联动另一个图形。
+
+#### 时间序列图形
+
+处理时间序列数据是数据分析中另一常见的情形。Bokeh有一个成熟的类 [`DatetimeAxis`](http://bokeh.pydata.org/en/latest/docs/reference/models/axes.html#bokeh.models.axes.DatetimeAxis)，可以根据现有的图形来生成时间序列图形。[`DatetimeAxis`](http://bokeh.pydata.org/en/latest/docs/reference/models/axes.html#bokeh.models.axes.DatetimeAxis)的一些坐标轴的参数有默认值，当然你也可以不用[`DatetimeAxis`](http://bokeh.pydata.org/en/latest/docs/reference/models/axes.html#bokeh.models.axes.DatetimeAxis)而看情况直接将`figure()`中`x_axis_type`或`y_axis_type`的值设为`"datetime"`来说明绘图的类型是时间序列。
+
+这个例子中也有一些有趣的用法：
+
+- 设置`figure()`函数中的`width`和`height`参数
+- 通过改变参数自定义图形和其他对象
+- 通过设置`figure`的参数（如`legend`、`grid`、`xgrid`、`ygrid`、`axis`、`xaxis`、`yaxis`）来调整图形中的注释
+
+```python
+import numpy as np
+
+from bokeh.plotting import figure, output_file, show
+from bokeh.sampledata.stocks import AAPL
+
+# prepare some data
+aapl = np.array(AAPL['adj_close'])
+aapl_dates = np.array(AAPL['date'], dtype=np.datetime64)
+
+window_size = 30
+window = np.ones(window_size)/float(window_size)
+aapl_avg = np.convolve(aapl, window, 'same')
+
+# output to static HTML file
+output_file("stocks.html", title="stocks.py example")
+
+# create a new plot with a a datetime axis type
+p = figure(width=800, height=350, x_axis_type="datetime")
+
+# add renderers
+p.circle(aapl_dates, aapl, size=4, color='darkgrey', alpha=0.2, legend='close')
+p.line(aapl_dates, aapl_avg, color='navy', legend='avg')
+
+# NEW: customize by setting attributes
+p.title.text = "AAPL One-Month Average"
+p.legend.location = "top_left"
+p.grid.grid_line_alpha=0
+p.xaxis.axis_label = 'Date'
+p.yaxis.axis_label = 'Price'
+p.ygrid.band_fill_color="olive"
+p.ygrid.band_fill_alpha = 0.1
+
+# show the results
+show(p)
+```
+
+【图图】
+
+### Bokeh图形服务器
+
+Bokeh服务器是一个可选的组件项。尽管没有Bokeh图形服务器，我们一样可以创建出有趣、可交互的可视化数据。但是Bokeh还有一些新颖、强大的能力或许你会想用到
+
+- 用UI和选项来驱动图形的计算和更新
+- 能够降低大型数据集采样率的智能服务端
+- 通过流数据自动更新图形
+- 适用于大数据的成熟图形重绘系统
+- 发布更易于普通用户操作的可视化图形
+
+由于空间有限，不能在快速入门中讲解所有的用法，读者可以现在下面这个例子中感受一些Bokeh图形服务器的强大。
+
+【交互图图】
+
+你可以在 [Gallery](http://bokeh.pydata.org/en/latest/docs/gallery.html#gallery)的 [Server App Examples](http://bokeh.pydata.org/en/latest/docs/gallery.html#gallery-server-examples)部分中找到更多有关图形服务器绘图的例子。想要知道更多图形服务器的细节请移步 [User Guide](http://bokeh.pydata.org/en/latest/docs/user_guide.html#userguide)的[Running a Bokeh Server](http://bokeh.pydata.org/en/latest/docs/user_guide/server.html#userguide-server)部分
+
+### 下一步干啥？
+
+【困了。睡觉。。。】
+
