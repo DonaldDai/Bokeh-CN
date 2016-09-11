@@ -27,9 +27,9 @@ Bokeh是一个很美观实用的Python交互绘图库，但是他的官方文档
 
 目录
 
-- User Guide
+- <a href="#UserGuide">用户指南（User Guide）</a>
 - <a href="#Quickstart">快速入门（Quickstart）</a>
-- Getting Set Up
+- <a href="#GettingSetUp">设置（Getting Set Up）</a>
 - Defining Key Concepts
 - Plotting with Basic Glyphs
 - Making High-level Charts
@@ -52,6 +52,22 @@ Bokeh是一个很美观实用的Python交互绘图库，但是他的官方文档
 - Extending Bokeh
 - Learning More
 - Tutorials
+
+## <p id="UserGuide">用户指南（User Guide）</p>
+
+这一章内容主要是了解一下整片用户指南的大体结构，根据你可能用到的情况，你可以挑选不同的章节去了解。章节根据内容分为：
+
+### 快速入门（Quickstart）
+
+主要是走马观花的带你过一遍基本的功能和用法。
+
+### 设置（Getting Set Up）
+
+验证你的Bokeh是否安装成功
+
+### 在HTML中插入图表或Apps（Embedding Plots and Apps)
+
+以多种方式在HTML文档中嵌入静态或基于Bokeh服务器的交互图表
 
 ## <p id="Quickstart">快速入门（Quickstart）</p>
 
@@ -442,7 +458,53 @@ Bokeh服务器是一个可选的组件项。尽管没有Bokeh图形服务器，�
 
 【困了。睡觉。。。】
 
+## <p id="GettingSetUp">设置（Getting Set Up）</p>
 
+这一章的第一部分会指引你快速安装一下Bokeh并做一些小测试来检测一下是否安装正常。
+
+### 安装Bokeh库
+
+安装Bokeh最简单的方法就是用诸如`pip`、`conda`等包管理工具来安装。如果你用过 [Anaconda](http://continuum.io/anaconda)那么你可以用`conda`来安装
+
+```
+conda install bokeh
+```
+
+否则，就用`pip`工具来安装
+
+```
+pip install bokeh
+```
+
+如果要查看更多安装方面的细节可以参考Bokeh文档的[安装](http://bokeh.pydata.org/en/latest/docs/installation.html#installation)部分。
+
+### 验证安装
+
+第一步你可以在Python的交互式命令行中`import bokeh`，用`bokeh.__version__`来查看当前安装的版本。如果你能成功执行命令，结果应该长这样：
+
+【图图】
+
+第二步，你可以用Bokeh绘制一个简单的图形来检测是否安装正常。将下面的代码保存到文件中并执行或者直接在Python交互式命令行中键入下面的代码来绘制一副简单的图形。
+
+```python
+from bokeh.plotting import figure, output_file, show
+output_file("test.html")
+p = figure()
+p.line([1, 2, 3, 4, 5], [6, 7, 2, 4, 5], line_width=2)
+show(p)
+```
+
+这段代码会生成一个名为`test.html`的本地文件，并且会自动打开默认浏览器来显示图形。正常运行的图形应该是这样的
+
+【图图】
+
+你也可以在IPython/Jupyter notebook中执行上述的代码来绘制图形，但是需要把上面代码中的`output_file`替换成`output_notebook`。结果如下
+
+【图图】
+
+### 寻求帮助？
+
+如果在你安装或者运行示例的时候出现问题了，可以发Email到[Bokeh mailing list](https://groups.google.com/a/continuum.io/forum/#!forum/bokeh)寻求帮助，也可以在[Bokeh GitHub issue tracker](https://github.com/bokeh/bokeh/issues)中提交Issue。
 
 ## <p id="EmbeddingPlotsandApps">在HTML中嵌入图表和Apps（Embedding Plots and Apps）</p>
 
@@ -684,3 +746,6 @@ js, tag = autoload_static(plot, CDN, "some/path")
 > 注意
 >
 > 由于<script>会替换成<div>所以不能把<script>代码段放在<head>标签中
+
+
+
