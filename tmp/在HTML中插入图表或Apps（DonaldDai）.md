@@ -1,4 +1,4 @@
-## 在HTML中嵌入图表和Apps
+## 在HTML中嵌入图表和Apps-Embedding Plots and Apps
 
 原文 [Embedding Plots and Apps](http://bokeh.pydata.org/en/latest/docs/user_guide/embed.html)
 
@@ -237,4 +237,4 @@ js, tag = autoload_static(plot, CDN, "some/path")
 
 > 注意
 >
-> 由于<script>会替换成<div>所以不能把<script>代码段放在<head>标签中
+> 由于<script>会被替换成<div>所以不能把<script>代码段放在<head>标签中
