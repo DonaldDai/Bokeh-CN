@@ -27,9 +27,9 @@ Bokeh是一个很美观实用的Python交互绘图库，但是他的官方文档
 
 目录
 
-- <a href="#UserGuide">用户指南（User Guide）</a>
-- <a href="#Quickstart">快速入门（Quickstart）</a>
-- <a href="#GettingSetUp">设置（Getting Set Up）</a>
+- <a href="#UserGuide">用户指南-User Guide</a>
+- <a href="#Quickstart">快速入门-Quickstart</a>
+- <a href="#GettingSetUp">设置-Getting Set Up</a>
 - Defining Key Concepts
 - Plotting with Basic Glyphs
 - Making High-level Charts
@@ -45,7 +45,7 @@ Bokeh是一个很美观实用的Python交互绘图库，但是他的官方文档
 - JavaScript Callbacks
 - Using Bokeh Commands
 - Running a Bokeh Server
-- <a href="#EmbeddingPlotsandApps">在HTML中嵌入图表和Apps（Embedding Plots and Apps）</a>
+- <a href="#EmbeddingPlotsandApps">在HTML中嵌入图表和Apps-Embedding Plots and Apps</a>
 - Speeding up with WebGL
 - Mapping Geo Data
 - Developing with JavaScript
@@ -69,11 +69,11 @@ Bokeh是一个很美观实用的Python交互绘图库，但是他的官方文档
 
 以多种方式在HTML文档中嵌入静态或基于Bokeh服务器的交互图表
 
-## <p id="Quickstart">快速入门（Quickstart）</p>
+## <p id="Quickstart">快速入门-Quickstart</p>
 
 原文 [Quickstart](http://bokeh.pydata.org/en/latest/docs/user_guide/quickstart.html)
 
-### 介绍
+### 介绍-Introduction
 
 Bokeh是致力于网页浏览器展示的Python交互式图表库。Bokeh能读取巨大的数据集或者流数据以简单快捷的方式为网页提供优美、简洁、高交互性能的图形。
 
@@ -85,7 +85,7 @@ Bokeh是致力于网页浏览器展示的Python交互式图表库。Bokeh能读�
 
 快速入门只能主要运用 [bokeh.plotting](http://bokeh.pydata.org/en/latest/docs/reference/plotting.html#bokeh-plotting)接口
 
-### 快速安装
+### 快速安装-Quick Installation
 
 Bokeh有多种安装方式，Bokeh推荐在 [Anaconda Python distribution](http://continuum.io/anaconda)的命令窗口来安装，这是最简单的方法。
 
@@ -107,7 +107,7 @@ pip install bokeh
 >
 > pip安装方式不安装示例。若要查看示例可以`Clone`下Git仓库中的`examples/`到本地。[HELP此处应有超链接]
 
-### 开始
+### 开始-Getting Started
 
 Bokeh是一个很大的库，功能丰富，而这一章节中只是对Bokeh常用的示例和工作流进行简单讲解。若要了解更多功能，请参见 [User Guide](http://bokeh.pydata.org/en/latest/docs/user_guide.html#userguide)
 
@@ -135,7 +135,9 @@ p.line(x, y, legend="Temp.", line_width=2)
 show(p)
 ```
 
-![](/img/QS-GS1.png)
+![](/img/QS_GS1.png)
+
+[交互图](/jupyter/QS_GS1.ipynb)
 
 当运行这段代码之后，会在项目当前目录下创建一个`"lines.html"`文件，并且浏览器会自动打开一个新标签页来显示刚刚创建的图表（为展示需要，会把代码生成的图形放在此文档中，以供参考）
 
@@ -182,17 +184,19 @@ p.line(x, y2, legend="y=10^x^2", line_color="orange", line_dash="4 4")
 show(p)
 ```
 
-![](/img/QS-GS2.png)
+![](/img/QS_GS2.png)
 
-### 在Jupyter Notebooks上运用Bokeh
+[交互图](/jupyter/QS_GS2.ipynb)
+
+### Jupyter Notebooks上的应用-Jupyter Notebooks
 
 在这一小节中，我们将会讲解Jypyter Notebooks上Bokeh的使用
 
-Jupyter Notebooks是一款风靡于“PyData”社区的强大的数据分析工具。Bokeh无缝整合了Jupyter Notebooks和Bokeh。如果想在Notebook中查看之前的示例，只需要将`output_file()`替换成`output_notebook()`即可。
+Jupyter Notebooks是一款风靡于“PyData”社区的强大的数据分析工具。Bokeh无缝整合了Jupyter Notebooks和Bokeh。如果想在Notebook中查看之前的示例，只需要将`output_file()`替换成`output_notebook()`即可，注意这里`output_notebook()`不需要参数。
 
 在 [Bokeh NBViewer Gallery](http://nbviewer.ipython.org/github/bokeh/bokeh-notebooks/blob/master/index.ipynb)还有许多静态示例，有兴趣的可以去看看。
 
-在 [Bokeh GitHub repository](https://github.com/bokeh/bokeh)上也有大量的notebook示例，若想要查看，可以`clone`下整个仓库，之后再命令行中进入其中的`example/howto`子目录，接着运行
+在 [Bokeh GitHub repository](https://github.com/bokeh/bokeh)上也有大量的notebook示例，若想要查看，可以`clone`下整个仓库，之后再命令行中进入其中的`examples/howto`子目录，接着运行
 
 ```
 ipython notebook
@@ -204,7 +208,7 @@ ipython notebook
 
 [examples/howto/notebook_comms/Numba Image Example.ipynb](https://github.com/bokeh/bokeh/tree/0.12.1/examples/howto/notebook_comms/Numba%20Image%20Example.ipynb)
 
-### 其他语言版本的Bokeh
+### 多语言支持-Other Languages
 
 Bokeh的体系结构使得Bokeh能够非常容易的为其他语言提供使用接口，其中有一些小众语言的接口已经存在（比如R，Scala，Julia）。尽管我们团队是Python的忠实粉丝，但是我们也同时在开发着不同语言的Bokeh库，可以通过以下链接查看已经编译完的一些多语言Bokeh库
 
@@ -212,7 +216,7 @@ Bokeh的体系结构使得Bokeh能够非常容易的为其他语言提供使用�
 - [Bokeh for Scala](https://github.com/bokeh/bokeh-scala)
 - [Bokeh for Julia](https://github.com/bokeh/Bokeh.jl)
 
-### 示例数据
+### 示例数据-Sample Data
 
 示例中所用的数据和示例是分开存放的，若要下载这些数据，可以在Bash或者Windows命令提示符后键入命令
 
@@ -220,28 +224,28 @@ Bokeh的体系结构使得Bokeh能够非常容易的为其他语言提供使用�
 bokeh sampledata
 ```
 
-### 相关概念
+### 相关概念-Concepts
 
 根据上面的一些例子，这里提出一些核心概念
 
-#### 图形（Plot）
+#### 图形-Plot
 
 图形是Bokeh的中心概念。图形在Bokeh中指的是容纳曲线、指示、数据、工具等几乎所有用来展示的元素的一个容器。具体的，Bokeh中的 [`bokeh.plotting`](http://bokeh.pydata.org/en/latest/docs/reference/plotting.html#bokeh-plotting)接口提供了一个 `Figure`类来聚集所有这些必要的元素，而`Fighure`实例可以很方便的由`figure()`函数来创建
 
-#### 标示（Glyphs）
+#### 标示-Glyphs
 
 标示是Bokeh中的基础视觉元素。在Bokeh的底层，标示以**glyph对象**存在，比如`Line`。如果你要使用低级接口[`bokeh.models`](http://bokeh.pydata.org/en/latest/docs/reference/models.html#bokeh-models)来绘制图形，那么你还需要创建所有必要的Bokeh对象，其中包括上面提到的glyph对象和对应的数据集。为了使用更方便，[`bokeh.plotting`](http://bokeh.pydata.org/en/latest/docs/reference/plotting.html#bokeh-plotting)提供一个更高级的**glyph方法**像本章第一个示例中用的`Figure.line`就是其中一个。第二个示例中增加了`Figure.circle`来同时显示曲线和圆。除了曲线和圆，Bokeh还有许多可选的[标示](http://bokeh.pydata.org/en/latest/docs/reference/models/glyphs.html#bokeh-models-glyphs)和[标志](http://bokeh.pydata.org/en/latest/docs/reference/models/markers.html#bokeh-models-markers)。
 
 视觉元素的外观和数据的值是紧密相关的。在上面的例子中，我们可以看到*x*和*y*参数是可以被赋值为向量的。但其实标示还有许多可选的属性参数，如[线形属性](http://bokeh.pydata.org/en/latest/docs/user_guide/styling.html#userguide-styling-line-properties)、[填充属性](http://bokeh.pydata.org/en/latest/docs/user_guide/styling.html#userguide-styling-fill-properties)和[文字属性](http://bokeh.pydata.org/en/latest/docs/user_guide/styling.html#userguide-styling-text-properties)。所有这些参数都可以以向量的形式赋值给参数，在下面会给出相关示例
 
-#### 指示&说明（Guides and Annotations）
+#### 指示&说明-Guides and Annotations
 
 Bokeh还提供一些别的视觉组件才帮助用户更好的展示或者让用户在图中做比较。这一类组件分为两类
 
 - 指示（Guides）：指示的作用主要是帮助用户判断图中的距离，角度等。具体的包括格线、坐标轴等
 - 说明（Annotations）：说明主要包括图中的标签部分，具体的比如有标题，图例等
 
-#### 数据范围（Ranges）
+#### 数据范围-Ranges
 
 数据范围指的是绘图过程中所使用的数据的上界与下界。默认情况下，用[`bokeh.plotting`](http://bokeh.pydata.org/en/latest/docs/reference/plotting.html#bokeh-plotting)接口绘制出的图像时，Bokeh的`DataRangeld`对象会根据所用数据计算出数据范围，之后传给绘图函数。当然，数据范围也可以手动传入，只需要在绘图时传入如下参数，参数可以接受Python中的列表或者二元元组形式的赋值
 
@@ -249,15 +253,15 @@ Bokeh还提供一些别的视觉组件才帮助用户更好的展示或者让用
 p = figure(x_range=[0,10], y_range=(10, 20))
 ```
 
-#### 相关资源（Resources）
+#### 相关资源-Resources
 
 若要在用户本地展示图形，要求所使用的浏览器加载Bokeh的JS和CSS文件。默认情况下，`output_file()`函数会自动在生成的HTML中加载来自 [http://cdn.pydata.org](http://cdn.pydata.org/) 的样式文件。但是，你也可以将文件下载下来，之后再本地载入，若要使用这种方式请在`output_file()`函数中添加参数`mode="inline"`。
 
-### 更多例子
+### 更多例子-More examples
 
 下面给出更多在别的场合下经常会用到的例子，所有这些例子都是用[`bokeh.plotting`](http://bokeh.pydata.org/en/latest/docs/reference/plotting.html#bokeh-plotting)接口绘制的。
 
-#### 以向量形式传入颜色和尺寸
+#### 参数向量化-Vectorized colors and sizes
 
 这个例子主要演示如何传入一系列的数据给绘图参数如`fill_color`和`radius`。你也可以在这个例子中找到以下情况的用法：
 
@@ -296,9 +300,11 @@ p.circle(x,y, radius=radii, fill_color=colors, fill_alpha=0.6, line_color=None)
 show(p)
 ```
 
-【图图】
+![](/img/QS_ME_VCS.png)
 
-#### 数据联动的两种方式
+[交互图](/jupyter/QS_ME_VCS.ipynb)
+
+#### 数据联动-Linked panning and brushing
 
 > 什么是数据联动？
 >
@@ -347,7 +353,9 @@ p = gridplot([[s1, s2, s3]], toolbar_location=None)
 show(p)
 ```
 
-【图图】
+![](/img/QS_ME_LPB1.png)
+
+[交互图](/jupyter/QS_ME_LPB1.ipynb)
 
 尽管工具栏是隐藏的，但是笔工具仍然处于激活状态。点击并拖动图形可以改变坐标轴的范围，同时你也可以观察到三个图形的坐标轴数据是怎么联动的
 
@@ -387,9 +395,13 @@ p = gridplot([[left, right]])
 show(p)
 ```
 
+![](/img/QS_ME_LPB2.png)
+
+[交互图](/jupyter/QS_ME_LPB2.ipynb)
+
 选择方形选择工具（box select）或者套索选择工具（lasso select）在其中一个图形中进行操作，这个操作会联动另一个图形。
 
-#### 时间序列图形
+#### 时间序列图形-Datetime axes
 
 处理时间序列数据是数据分析中另一常见的情形。Bokeh有一个成熟的类 [`DatetimeAxis`](http://bokeh.pydata.org/en/latest/docs/reference/models/axes.html#bokeh.models.axes.DatetimeAxis)，可以根据现有的图形来生成时间序列图形。[`DatetimeAxis`](http://bokeh.pydata.org/en/latest/docs/reference/models/axes.html#bokeh.models.axes.DatetimeAxis)的一些坐标轴的参数有默认值，当然你也可以不用[`DatetimeAxis`](http://bokeh.pydata.org/en/latest/docs/reference/models/axes.html#bokeh.models.axes.DatetimeAxis)而看情况直接将`figure()`中`x_axis_type`或`y_axis_type`的值设为`"datetime"`来说明绘图的类型是时间序列。
 
@@ -436,9 +448,22 @@ p.ygrid.band_fill_alpha = 0.1
 show(p)
 ```
 
-【图图】
+![](/img/QS_ME_DA.png)
 
-### Bokeh图形服务器
+[交互图](/jupyter/QS_ME_DA.ipynb)
+
+> 注意
+>
+> 这里绘图需要下载一些官方资源，已经下载的上述代码运行不会出问题，如果上述代码运行出错请根据提示
+>
+> ```python
+> from bokeh.sampledata import download
+> download()
+> ```
+>
+> 下载相关资源
+
+### Bokeh图形服务器-Bokeh Plot Server
 
 Bokeh服务器是一个可选的组件项。尽管没有Bokeh图形服务器，我们一样可以创建出有趣、可交互的可视化数据。但是Bokeh还有一些新颖、强大的能力或许你会想用到
 
@@ -450,19 +475,19 @@ Bokeh服务器是一个可选的组件项。尽管没有Bokeh图形服务器，�
 
 由于空间有限，不能在快速入门中讲解所有的用法，读者可以现在下面这个例子中感受一些Bokeh图形服务器的强大。
 
-【交互图图】
+![](/img/QS_BPS.png)
 
 你可以在 [Gallery](http://bokeh.pydata.org/en/latest/docs/gallery.html#gallery)的 [Server App Examples](http://bokeh.pydata.org/en/latest/docs/gallery.html#gallery-server-examples)部分中找到更多有关图形服务器绘图的例子。想要知道更多图形服务器的细节请移步 [User Guide](http://bokeh.pydata.org/en/latest/docs/user_guide.html#userguide)的[Running a Bokeh Server](http://bokeh.pydata.org/en/latest/docs/user_guide/server.html#userguide-server)部分
 
-### 下一步干啥？
+### 下一步干啥？-What’s next?
 
 【困了。睡觉。。。】
 
-## <p id="GettingSetUp">设置（Getting Set Up）</p>
+## <p id="GettingSetUp">设置-Getting Set Up</p>
 
 这一章的第一部分会指引你快速安装一下Bokeh并做一些小测试来检测一下是否安装正常。
 
-### 安装Bokeh库
+### 安装Bokeh库-Installing the Bokeh Library
 
 安装Bokeh最简单的方法就是用诸如`pip`、`conda`等包管理工具来安装。如果你用过 [Anaconda](http://continuum.io/anaconda)那么你可以用`conda`来安装
 
@@ -478,11 +503,11 @@ pip install bokeh
 
 如果要查看更多安装方面的细节可以参考Bokeh文档的[安装](http://bokeh.pydata.org/en/latest/docs/installation.html#installation)部分。
 
-### 验证安装
+### 验证安装-Verifying your installation
 
 第一步你可以在Python的交互式命令行中`import bokeh`，用`bokeh.__version__`来查看当前安装的版本。如果你能成功执行命令，结果应该长这样：
 
-【图图】
+![](/img/GSU_VYI1.png)
 
 第二步，你可以用Bokeh绘制一个简单的图形来检测是否安装正常。将下面的代码保存到文件中并执行或者直接在Python交互式命令行中键入下面的代码来绘制一副简单的图形。
 
@@ -496,17 +521,17 @@ show(p)
 
 这段代码会生成一个名为`test.html`的本地文件，并且会自动打开默认浏览器来显示图形。正常运行的图形应该是这样的
 
-【图图】
+![](/img/GSU_VYI2.png)
 
 你也可以在IPython/Jupyter notebook中执行上述的代码来绘制图形，但是需要把上面代码中的`output_file`替换成`output_notebook`。结果如下
 
-【图图】
+![](/img/GSU_VYI3.png)
 
-### 寻求帮助？
+### 寻求帮助？-Finding Help
 
 如果在你安装或者运行示例的时候出现问题了，可以发Email到[Bokeh mailing list](https://groups.google.com/a/continuum.io/forum/#!forum/bokeh)寻求帮助，也可以在[Bokeh GitHub issue tracker](https://github.com/bokeh/bokeh/issues)中提交Issue。
 
-## <p id="EmbeddingPlotsandApps">在HTML中嵌入图表和Apps（Embedding Plots and Apps）</p>
+## <p id="EmbeddingPlotsandApps">在HTML中嵌入图表和Apps-Embedding Plots and Apps</p>
 
 原文 [Embedding Plots and Apps](http://bokeh.pydata.org/en/latest/docs/user_guide/embed.html)
 
@@ -745,7 +770,5 @@ js, tag = autoload_static(plot, CDN, "some/path")
 
 > 注意
 >
-> 由于<script>会替换成<div>所以不能把<script>代码段放在<head>标签中
-
-
+> 由于<script>会被替换成<div>所以不能把<script>代码段放在<head>标签中
 
