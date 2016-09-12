@@ -1,8 +1,8 @@
 ## 参与注意事项
 
-- 所有标题加上英文版标题
+- 所有标题加上英文版标题，这样方便在引用图片和Jupyter Notebook例子更方便。格式如下
 
-  如 快速入门（Quickstart）
+  ## 快速入门-Quickstart
 
 
 - 大标题以二级标题（**两个#**）显示，如
@@ -23,15 +23,17 @@
 
 - 交互式图形截图统一保存在`/img`路径下，命名规则为 
 
-  大标题选择简写\[-下一级标题选择简写\[顺序编号\]\]
+  大标题选择简写\[_子标题选择简写\[顺序编号\]\]
 
-  如 在Qickstart-Linked panning and brushing下的两张图片可以保存为
+  如 在Qickstart_Linked panning and brushing下的两张图片可以保存为
 
-  **QickStart-LinkedPanningandBrushing1.png**和**QickStart-LinkedPanningandBrushing2.png**
+  **QickStart_LinkedPanningandBrushing1.png**和**QickStart_LinkedPanningandBrushing2.png**
 
   或者
 
-  **QS-LPB1.png**和**QS-LPB2.png**
+  **QS_LPB1.png**和**QS_LPB2.png**
+
+- Jupyter notebook的例子保存在`/jupyter`路径下，命名规则跟图片一致，如果不会可以Email我哦
 
 - 参与者push的时间务必在**11：30**之前
 
