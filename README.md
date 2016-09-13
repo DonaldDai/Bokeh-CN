@@ -30,7 +30,7 @@ Bokeh是一个很美观实用的Python交互绘图库，但是他的官方文档
 - <a href="#UserGuide">用户指南-User Guide</a>
 - <a href="#Quickstart">快速入门-Quickstart</a>
 - <a href="#GettingSetUp">设置-Getting Set Up</a>
-- <a href="#DefiningKeyConcepts">一些重要概念</a>
+- <a href="#DefiningKeyConcepts">一些重要概念-Defining Key Concepts</a>
 - Plotting with Basic Glyphs
 - Making High-level Charts
 - Leveraging Other Libraries
