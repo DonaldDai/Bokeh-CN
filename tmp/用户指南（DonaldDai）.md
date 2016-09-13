@@ -10,6 +10,10 @@
 
 验证你的Bokeh是否安装成功
 
-### 在HTML中插入图表或Apps-Embedding Plots and Apps
+### 插入图表或Apps-Embedding Plots and Apps
 
 以多种方式在HTML文档中嵌入静态或基于Bokeh服务器的交互图表
+
+### 一些重要概念-Defining Key Concepts
+
+定义和解释一些基本的概念

@@ -1,4 +1,4 @@
-## 在HTML中嵌入图表和Apps-Embedding Plots and Apps
+## 嵌入图表和Apps-Embedding Plots and Apps
 
 原文 [Embedding Plots and Apps](http://bokeh.pydata.org/en/latest/docs/user_guide/embed.html)
 
