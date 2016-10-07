@@ -136,7 +136,7 @@ script, div = components(plot)
 
 ### 在IPython Notebook中嵌入图表
 
-`notebook_div()`函数能够生成适用于IPython Notebook嵌入的文本包，即只有一个输出。文本包中包含`script`和`div`文本。
+`notebook_div()`函数能够生成适用于IPython Notebook嵌入的文本包，只有一个输出。文本包中包含`script`和`div`文本。
 
 ```python
 from bokeh.plotting import figure
