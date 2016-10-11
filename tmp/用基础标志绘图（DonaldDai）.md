@@ -413,17 +413,148 @@ show(p)
 
 ### 设置坐标范围-Setting Ranges
 
-一般情况下，Bokeh
+一般情况下，Bokeh会根据曲线标志自适应的设置坐标范围，但你也可以用`Rangeld`方法来改变`x_range`和`y_range`来设置坐标范围，`Rangeld`方法接受两个参数，分别为坐标的起始点和终点。
+
+```python
+p.x_range = Rangeld(0, 100)
+```
+
+为方便起见，`figure()`方法也能接受形式为（起始点，终点）的元组作为属性`x_range`或`y_range`的值，而这两个属性能改变图形的坐标轴范围，下面的例子演示了两种修改坐标轴范围的方法
+
+```python
+from bokeh.plotting import figure, output_file, show
+from bokeh.models import Range1d
+
+output_file("title.html")
+
+# create a new plot with a range set with a tuple
+p = figure(plot_width=400, plot_height=400, x_range=(0, 20))
+
+# set a range using a Range1d
+p.y_range = Range1d(0, 15)
+
+p.circle([1, 2, 3, 4, 5], [2, 5, 8, 2, 7], size=10)
+
+show(p)
+```
+
+【图图】
+
+你也可以设置一个范围，限制用户使用pan或zoom工具的范围
 
 ### 配置坐标轴-Specifying Axis Types
 
-#### 分组坐标轴-Categorical Axes
+上面所有的例子所使用的坐标轴都是线性的。线性坐标轴适用于大多数图形，但有时候时间轴和对数轴更有用，这一节中将讲述如何配置[bokeh.plotting](http://bokeh.pydata.org/en/latest/docs/reference/plotting.html#bokeh-plotting)图形的坐标轴类型。
 
-#### 时序坐标轴-Datetime Axes
+#### 类轴-Categorical Axes
+
+```python
+from bokeh.plotting import figure, output_file, show
+
+factors = ["a", "b", "c", "d", "e", "f", "g", "h"]
+x = [50, 40, 65, 10, 25, 37, 80, 60]
+
+output_file("categorical.html")
+
+p = figure(y_range=factors)
+
+p.circle(x, factors, size=15, fill_color="orange", line_color="green", line_width=3)
+
+show(p)
+```
+
+【图图】
+
+#### 时间坐标轴-Datetime Axes
+
+当处理的数据与时间有关时，使用时间坐标轴是个很好的选择。
+
+> 注意
+>
+> 下面的例子需要联网才能正常运行，并且，为了更方便的展示数据，会用到第三方Pandas库。
+
+之前我们已经学习过了如何使用[bokeh.plotting](http://bokeh.pydata.org/en/latest/docs/reference/plotting.html#bokeh-plotting)的`figure()`函数来绘制图形，其实`figure()`函数还接受`x_axis_type`和`y_axis_type`参数，分别表示x和y轴的类型。要配置成时间坐标轴，传入`"datetime"`参数即可。
+
+```python
+import pandas as pd
+from bokeh.plotting import figure, output_file, show
+
+AAPL = pd.read_csv(
+        "http://ichart.yahoo.com/table.csv?s=AAPL&a=0&b=1&c=2000&d=0&e=1&f=2010",
+        parse_dates=['Date']
+    )
+
+output_file("datetime.html")
+
+# create a new plot with a datetime axis type
+p = figure(width=800, height=250, x_axis_type="datetime")
+
+p.line(AAPL['Date'], AAPL['Close'], color='navy', alpha=0.5)
+
+show(p)
+```
+
+【图图】
+
+> 注意 
+>
+> 未来版本的Bokeh将会自动识别时间序列数据，并配置时间坐标轴
 
 #### 对数坐标轴-Log Scale Axes
 
+当处理指数级增长等快速增长的数据时，用指数坐标轴能更准确方便的表示图形，有的情况数据增长的很快，以致于两个轴都要用指数坐标轴来表示。
+
+和上面的方法类似，要配置指数坐标轴，向`figure()`函数的`x_axis_type`和`y_axis_type`属性传入`"log"`值即可。
+
+```python
+from bokeh.plotting import figure, output_file, show
+
+x = [0.1, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0]
+y = [10**xx for xx in x]
+
+output_file("log.html")
+
+# create a new plot with a log axis type
+p = figure(plot_width=400, plot_height=400,
+           y_axis_type="log", y_range=(10**-1, 10**4))
+
+p.line(x, y, line_width=2)
+p.circle(x, y, fill_color="white", size=8)
+
+show(p)
+```
+
+【图图】
+
 #### 双轴-Twin Axes
+
+有的情况下要将两个范围不同的曲线表示在同一图形中，这时就需要两个坐标轴，也就是双轴。可以通过图形对象的`extra_x_range`和`extra_y_range`属性来创建额外的坐标轴，再通过`add_layout`函数布置到图形中，例子如下
+
+```python
+from numpy import pi, arange, sin, linspace
+
+from bokeh.plotting import output_file, figure, show
+from bokeh.models import LinearAxis, Range1d
+
+x = arange(-2*pi, 2*pi, 0.1)
+y = sin(x)
+y2 = linspace(0, 100, len(y))
+
+output_file("twin_axis.html")
+
+p = figure(x_range=(-6.5, 6.5), y_range=(-1.1, 1.1))
+
+p.circle(x, y, color="red")
+
+p.extra_y_ranges = {"foo": Range1d(start=0, end=100)}
+p.circle(x, y2, color="blue", y_range_name="foo")
+p.add_layout(LinearAxis(y_range_name="foo"), 'left')
+
+show(p)
+```
+
+【图图】
 
 ### 添加注释
 
+这一部分已被移除，具体详见[Adding Annotations](http://bokeh.pydata.org/en/latest/docs/user_guide/annotations.html#userguide-annotations)。
